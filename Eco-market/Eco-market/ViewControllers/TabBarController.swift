@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Eco-market
-//
-//  Created by Madina Amankeldinova on 15.12.2023.
-//
-
 import UIKit
 
 class TabBarController: UITabBarController {
@@ -28,14 +21,20 @@ class TabBarController: UITabBarController {
     private func createNav(with title: String, bigtitle: String, and image: String, vc: UIViewController) -> UINavigationController{
         let nav = UINavigationController(rootViewController: vc)
         
-        nav.tabBarItem.title = title
-        nav.tabBarItem.image = UIImage(named: image)
+        let navigationBar = nav.navigationBar
+           navigationBar.barTintColor = UIColor.blue // Change the background color
+           navigationBar.tintColor = UIColor.white // Change the bar button item color
+           navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white] // Change the title color
+           
         
-        
-        nav.navigationItem.title = bigtitle
-        
-        
-        return nav
+           // Customize the navigation item (title) of the view controller
+           vc.navigationItem.title = bigtitle
+           
+           // Customize the tab bar item
+           nav.tabBarItem.title = title
+           nav.tabBarItem.image = UIImage(named: image)
+           
+           return nav
     }
     
 
