@@ -52,16 +52,6 @@ class MainController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
-       
-//        self.view.addSubview(blackMaskView)
-//        blackMaskView.translatesAutoresizingMaskIntoConstraints = false
-//        
-//        NSLayoutConstraint.activate([
-//            blackMaskView.topAnchor.constraint(equalTo:  self.view.topAnchor),
-//            blackMaskView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-//            blackMaskView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-//            blackMaskView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-//        ])
         
     }
     
@@ -82,13 +72,42 @@ extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
             fatalError("failed to dequeque CustomCollectionViewCell in MainViewController.")
         }
+            
             let image = self.images[indexPath.row]
             cell.configure(with: image)
+        
+            addGradientOverlay(to: cell.contentView)
+            addText(to: cell.contentView, text: "hello")
+            
             
             cell.layer.cornerRadius = 16
             cell.layer.masksToBounds = true
-//            cell.blackMaskView.alpha = 0.3
+        
             return cell
+        
+    }
+    
+    
+    private func addGradientOverlay(to view: UIView) {
+    
+            let gradientLayer = CAGradientLayer()
+            
+            gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.withAlphaComponent(0.7).cgColor]
+            gradientLayer.locations = [0.0, 1.0]
+            gradientLayer.frame = view.bounds
+            view.layer.addSublayer(gradientLayer)
+        }
+    
+    private func addText(to view: UIView, text cellTitle: String ) {
+        let label = UILabel()
+        
+        label.text = cellTitle
+        label.textColor = UIColor.white
+        label.font = UIFont(name: "SFPro-Bold", size: 20)
+        label.frame = CGRect(x: 16, y: view.bounds.height - 40, width: view.bounds.width - 32, height: 30)
+        
+        view.addSubview(label)
+        
         
     }
         

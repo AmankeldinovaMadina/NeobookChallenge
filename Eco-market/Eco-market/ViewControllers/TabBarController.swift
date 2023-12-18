@@ -22,10 +22,11 @@ class TabBarController: UITabBarController {
         let nav = UINavigationController(rootViewController: vc)
         
         let navigationBar = nav.navigationBar
-           navigationBar.barTintColor = UIColor.blue // Change the background color
+           navigationBar.barTintColor = UIColor.white // Change the background color
            navigationBar.tintColor = UIColor.white // Change the bar button item color
-           navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white] // Change the title color
-           
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black] // Change the title color
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 24)]
+
         
            // Customize the navigation item (title) of the view controller
            vc.navigationItem.title = bigtitle
