@@ -75,6 +75,7 @@ extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
             
             let image = self.images[indexPath.row]
             cell.configure(with: image)
+    
         
             addGradientOverlay(to: cell.contentView)
             addText(to: cell.contentView, text: "hello")
