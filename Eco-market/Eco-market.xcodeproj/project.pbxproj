@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FAA0D402B333CCD008BD381 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA0D3F2B333CCD008BD381 /* CategoryModel.swift */; };
+		4FAA0D432B334434008BD381 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4FAA0D422B334434008BD381 /* Alamofire */; };
 		4FAB1C362B2C3D2000A773B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB1C352B2C3D2000A773B7 /* AppDelegate.swift */; };
 		4FAB1C382B2C3D2000A773B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB1C372B2C3D2000A773B7 /* SceneDelegate.swift */; };
 		4FAB1C3A2B2C3D2000A773B7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAB1C392B2C3D2000A773B7 /* TabBarController.swift */; };
@@ -20,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FAA0D3F2B333CCD008BD381 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		4FAB1C322B2C3D2000A773B7 /* Eco-market.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco-market.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAB1C352B2C3D2000A773B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FAB1C372B2C3D2000A773B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,12 +42,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FAA0D432B334434008BD381 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FAA0D3E2B333CA0008BD381 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4FAA0D3F2B333CCD008BD381 /* CategoryModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4FAB1C292B2C3D2000A773B7 = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +76,7 @@
 		4FAB1C342B2C3D2000A773B7 /* Eco-market */ = {
 			isa = PBXGroup;
 			children = (
+				4FAA0D3E2B333CA0008BD381 /* Models */,
 				4FAB1C352B2C3D2000A773B7 /* AppDelegate.swift */,
 				4FAB1C372B2C3D2000A773B7 /* SceneDelegate.swift */,
 				4FAB1C492B2DE5AA00A773B7 /* ViewControllers */,
@@ -103,6 +116,9 @@
 			dependencies = (
 			);
 			name = "Eco-market";
+			packageProductDependencies = (
+				4FAA0D422B334434008BD381 /* Alamofire */,
+			);
 			productName = "Eco-market";
 			productReference = 4FAB1C322B2C3D2000A773B7 /* Eco-market.app */;
 			productType = "com.apple.product-type.application";
@@ -131,6 +147,9 @@
 				Base,
 			);
 			mainGroup = 4FAB1C292B2C3D2000A773B7;
+			packageReferences = (
+				4FAA0D412B334434008BD381 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 4FAB1C332B2C3D2000A773B7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -164,6 +183,7 @@
 				4FAB1C532B2DE66B00A773B7 /* InfoController.swift in Sources */,
 				4FAB1C512B2DE65900A773B7 /* HistoryController.swift in Sources */,
 				4FAB1C382B2C3D2000A773B7 /* SceneDelegate.swift in Sources */,
+				4FAA0D402B333CCD008BD381 /* CategoryModel.swift in Sources */,
 				4FAB1C4D2B2DE60C00A773B7 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +397,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4FAA0D412B334434008BD381 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4FAA0D422B334434008BD381 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4FAA0D412B334434008BD381 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4FAB1C2A2B2C3D2000A773B7 /* Project object */;
 }
