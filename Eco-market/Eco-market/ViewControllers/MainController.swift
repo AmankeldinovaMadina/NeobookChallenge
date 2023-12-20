@@ -79,7 +79,7 @@ extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
         
             addGradientOverlay(to: cell.contentView)
             //addText(to: cell.contentView, text: "hello")
-            
+        
             
             cell.layer.cornerRadius = 16
             cell.layer.masksToBounds = true
