@@ -1,9 +1,6 @@
 import Foundation
 import Alamofire
 
-struct Categories: Codable {
-    let results: [Category]
-}
 struct Category: Codable {
     let id: Int
     let name: String
@@ -15,8 +12,8 @@ enum NetworkingError: Error {
 }
 
 
-class NetworkService {
-    static let shared = NetworkService()
+class NetworkServiceCategory {
+    static let shared = NetworkServiceCategory()
     private init() {}
     
     private func createURL() -> URL? {

@@ -1,9 +1,16 @@
 
 import UIKit
 
-class CustomCollectionViewCell: UICollectionViewCell {
+class CustomCategoryCollectionViewCell: UICollectionViewCell {
 
   static let identifier = "CustomCollectionViewCell"
+    
+    private let button: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.backgroundColor = .clear
+            return button
+        }()
     
     public let myImageView: UIImageView = {
         let iv = UIImageView()
@@ -55,4 +62,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
         self.myImageView.image = nil
         textLabel.text = nil
     }
+    
 }

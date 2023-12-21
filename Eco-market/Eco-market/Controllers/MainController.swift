@@ -14,7 +14,7 @@ class MainController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: CustomCollectionViewCell.identifier)
+        collectionView.register(CustomCategoryCollectionViewCell.self, forCellWithReuseIdentifier: CustomCategoryCollectionViewCell.identifier)
         collectionView.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
         return collectionView
         
@@ -24,7 +24,7 @@ class MainController: UIViewController {
         super.viewDidLoad()
         self.setupUI()
         
-        NetworkService.shared.fetchData { category in
+        NetworkServiceCategory.shared.fetchData { category in
             switch category {
             case .success(let categories):
                 self.categories = categories
@@ -60,10 +60,9 @@ extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
         return self.categories.count
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCategoryCollectionViewCell.identifier, for: indexPath) as? CustomCategoryCollectionViewCell else {
             fatalError("failed to dequeque CustomCollectionViewCell in MainViewController.")
         }
             let category = self.categories[indexPath.row]
@@ -114,6 +113,37 @@ extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
             label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12),
         ])
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedCategory = categories[indexPath.row]
+        print("Category selected: \(selectedCategory.name)")
+        
+        let searchViewController = SearchViewController()
+        let segmentIndex = segmentIndexForCategory(selectedCategory)
+        searchViewController.selectedCategoryIndex = segmentIndex
+        searchViewController.hidesBottomBarWhenPushed = true
+        
+        navigationController?.pushViewController(searchViewController, animated: true)
+        
+    }
+    
+    private func segmentIndexForCategory(_ category: Category) -> Int {
+            switch category.name {
+            case "Все":
+                return 0
+            case "Фрукты":
+                return 1
+            case "Сухофрукты":
+                return 2
+            case "Овощи":
+                return 3
+            default:
+                return 0 // Default to the first segment if category is not found
+            }
+        
+    }
 }
 
 
@@ -136,3 +166,4 @@ extension MainController: UICollectionViewDelegateFlowLayout {
     
 
 }
+
