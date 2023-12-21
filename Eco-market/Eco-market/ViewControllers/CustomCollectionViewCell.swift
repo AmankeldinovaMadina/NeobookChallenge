@@ -5,7 +5,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
   static let identifier = "CustomCollectionViewCell"
     
-    private let myImageView: UIImageView = {
+    public let myImageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
         iv.image = UIImage(systemName: "questionmark")
@@ -31,14 +31,12 @@ class CustomCollectionViewCell: UICollectionViewCell {
 
 
     
-    public func configure(with image: UIImage) {
-        self.myImageView.image = image
+    public func configure(with url: URL) {
+        self.myImageView.kf.setImage(with: url)
         self.setupUI()
     }
     
     private func setupUI() {
-        self.backgroundColor = .systemRed
-        
         self.addSubview(myImageView)
         myImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,17 +47,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
             myImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
         
-        layer.addSublayer(gradientLayer)
-        gradientLayer.frame = bounds
-        
-        addSubview(textLabel)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
-        ])
     }
 
     

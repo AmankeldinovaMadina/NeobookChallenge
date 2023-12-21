@@ -1,10 +1,10 @@
 import Foundation
 import Alamofire
 
-struct CategoriesModel: Codable {
-    let results: [CategoryModel]
+struct Categories: Codable {
+    let results: [Category]
 }
-struct CategoryModel: Codable {
+struct Category: Codable {
     let id: Int
     let name: String
     let image: String
@@ -32,7 +32,7 @@ class NetworkService {
         
     }
     
-    func fetchData(completion: @escaping (Result<CategoriesModel, Error>) ->()) {
+    func fetchData(completion: @escaping (Result<[Category], Error>) ->()) {
         guard let url = createURL() else {
             completion(.failure(NetworkingError.invalidData))
             return
@@ -48,8 +48,7 @@ class NetworkService {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     do {
-                        // Decode directly into ProductCategoryListResponse
-                        let categoriesResults = try decoder.decode(CategoriesModel.self, from: data!)
+                        let categoriesResults = try decoder.decode([Category].self, from: data!)
                         completion(.success(categoriesResults))
                         print("Decoded Results: \(categoriesResults)")
                     } catch {

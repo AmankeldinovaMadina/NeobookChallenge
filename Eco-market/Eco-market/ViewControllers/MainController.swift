@@ -1,12 +1,11 @@
-
 import Foundation
 import UIKit
+import Kingfisher
 
 
 class MainController: UIViewController {
     
-    
-    private var images: [UIImage] = []
+    private var categories: [Category] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -21,23 +20,21 @@ class MainController: UIViewController {
         
     }()
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         
-        
-        
-        for _ in 0...6{
-            images.append(UIImage(named: "1")!)
-            images.append(UIImage(named: "2")!)
-            images.append(UIImage(named: "3")!)
-            images.append(UIImage(named: "4")!)
-            images.append(UIImage(named: "5")!)
-            images.append(UIImage(named: "6")!)
+        NetworkService.shared.fetchData { category in
+            switch category {
+            case .success(let categories):
+                self.categories = categories
+                self.collectionView.reloadData()
+                
+            case .failure(let error):
+                print("Error in fetching \(error)")
+            }
         }
-
+        
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
     }
@@ -57,28 +54,26 @@ class MainController: UIViewController {
     
 }
 
-
-
 extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.images.count
+        return self.categories.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCollectionViewCell.identifier, for: indexPath) as? CustomCollectionViewCell else {
             fatalError("failed to dequeque CustomCollectionViewCell in MainViewController.")
         }
-            
-            let image = self.images[indexPath.row]
-            cell.configure(with: image)
-    
+            let category = self.categories[indexPath.row]
+            let categoryTitle = category.name
+            if let url = URL(string: category.image) {
+                cell.configure(with: url)
+            }
         
             addGradientOverlay(to: cell.contentView)
-            //addText(to: cell.contentView, text: "hello")
+            addText(to: cell.contentView, text: categoryTitle)
         
             
             cell.layer.cornerRadius = 16
@@ -104,14 +99,21 @@ extension MainController: UICollectionViewDelegate, UICollectionViewDataSource{
         
         label.text = cellTitle
         label.textColor = UIColor.white
-        label.font = UIFont(name: "SFPro-Bold", size: 20)
-        label.frame = CGRect(x: 16, y: view.bounds.height - 40, width: view.bounds.width - 32, height: 30)
-        
+        label.font = UIFont.boldSystemFont(ofSize: 20)
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        label.adjustsFontSizeToFitWidth = true
+
+        // auto-layout instead of setting the frame directly
+        label.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(label)
-        
-        
+
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
+            label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12),
+            label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -12),
+        ])
     }
-        
 }
 
 
