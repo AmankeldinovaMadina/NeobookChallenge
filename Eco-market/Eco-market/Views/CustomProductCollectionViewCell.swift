@@ -29,7 +29,7 @@ class CustomProductCollectionViewCell: UICollectionViewCell {
     
     private let buttonAdd: UIButton = {
         let buttonAdd = UIButton()
-        
+        return buttonAdd
     }()
     
 }

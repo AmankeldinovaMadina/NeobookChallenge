@@ -83,31 +83,23 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     }
     
     private func customizeBackButton() {
-        // Create the back button image
             let backImage = UIImage(systemName: "chevron.left")?.withRenderingMode(.alwaysTemplate)
         
-            // Create a button and set the image for the button
             let backButton = UIButton(type: .system)
             backButton.setImage(backImage, for: .normal)
-            backButton.tintColor = .black // Set your color
+            backButton.tintColor = .black
         
             backButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
-            
-            // Size the button to fit the content
             backButton.sizeToFit()
             
-            // Create a UIBarButtonItem using the custom button
             let backButtonItem = UIBarButtonItem(customView: backButton)
-            
-            // Assign the custom UIBarButtonItem as the leftBarButtonItem
             navigationItem.leftBarButtonItem = backButtonItem
             
-            // If you want to remove the default navigation back button title, set it to an empty string
             navigationItem.backButtonTitle = ""
     }
 
+
     @objc private func backButtonTapped() {
-        // Action to perform when the custom back button is tapped
         navigationController?.popViewController(animated: true)
     }
     

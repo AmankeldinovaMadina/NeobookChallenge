@@ -58,23 +58,33 @@ class InfoController: UIViewController {
         
 
         // Add three buttons
-        let button1 = UIButton()
-        button1.setTitle("Button 1", for: .normal)
-        button1.addTarget(self, action: #selector(button1Tapped), for: .touchUpInside)
-        button1.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(button1)
+        let buttonCall = UIButton()
+        buttonCall.setTitle("Позвонить", for: .normal)
+        buttonCall.setImage(UIImage(named: "phone"), for: .normal)
+        buttonCall.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        buttonCall.setTitleColor(.black, for: .normal)
+        buttonCall.contentHorizontalAlignment = .center
+        buttonCall.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        buttonCall.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        buttonCall.backgroundColor = .lightGray
+        buttonCall.layer.cornerRadius = 10
+        buttonCall.clipsToBounds = true
+        buttonCall.frame = CGRect(x: 100, y: 100, width: 332, height: 54)
+        buttonCall.addTarget(self, action: #selector(buttonCallTapped), for: .touchUpInside)
+        buttonCall.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(buttonCall)
 
-        let button2 = UIButton()
-        button2.setTitle("Button 2", for: .normal)
-        button2.addTarget(self, action: #selector(button2Tapped), for: .touchUpInside)
-        button2.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(button2)
+        let buttonWhatsapp = UIButton()
+        buttonWhatsapp.setTitle("WhatsApp", for: .normal)
+        buttonWhatsapp.addTarget(self, action: #selector(buttonWhatsAppTapped), for: .touchUpInside)
+        buttonWhatsapp.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(buttonWhatsapp)
 
-        let button3 = UIButton()
-        button3.setTitle("Button 3", for: .normal)
-        button3.addTarget(self, action: #selector(button3Tapped), for: .touchUpInside)
-        button3.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(button3)
+        let buttonInst = UIButton()
+        buttonInst.setTitle("Instagram", for: .normal)
+        buttonInst.addTarget(self, action: #selector(buttonInstTapped), for: .touchUpInside)
+        buttonInst.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(buttonInst)
 
         // Add constraints for all elements within the contentView
         NSLayoutConstraint.activate([
@@ -91,29 +101,45 @@ class InfoController: UIViewController {
             multiLineText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             multiLineText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
-            button1.topAnchor.constraint(equalTo: multiLineText.bottomAnchor, constant: 20),
-            button1.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            buttonCall.topAnchor.constraint(equalTo: multiLineText.bottomAnchor, constant: 20),
+            buttonCall.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
 
-            button2.topAnchor.constraint(equalTo: button1.topAnchor),
-            button2.leadingAnchor.constraint(equalTo: button1.trailingAnchor, constant: 16),
+            buttonWhatsapp.topAnchor.constraint(equalTo: buttonCall.topAnchor),
+            buttonWhatsapp.leadingAnchor.constraint(equalTo: buttonCall.trailingAnchor, constant: 16),
 
-            button3.topAnchor.constraint(equalTo: button1.topAnchor),
-            button3.leadingAnchor.constraint(equalTo: button2.trailingAnchor, constant: 16),
+            buttonInst.topAnchor.constraint(equalTo: buttonCall.topAnchor),
+            buttonInst.leadingAnchor.constraint(equalTo: buttonWhatsapp.trailingAnchor, constant: 16),
         ])
 
         // Adjust the content size of the scroll view to fit the contentView
         scrollView.contentSize = contentView.bounds.size
     }
 
-    @objc func button1Tapped() {
-        // Handle button 1 tap here
+    @objc func buttonCallTapped() {
+        let phoneNumber = "+77007007070"
+                if let phoneCallURL = URL(string: "tel://\(phoneNumber)"),
+                   UIApplication.shared.canOpenURL(phoneCallURL) {
+                    UIApplication.shared.open(phoneCallURL, options: [:], completionHandler: nil)
+                } else {
+                    //
+                }
     }
 
-    @objc func button2Tapped() {
-        // Handle button 2 tap here
+    @objc func buttonWhatsAppTapped() {
+        if let whatsApp = URL(string: "https://wa.link/b6p98d"),
+           UIApplication.shared.canOpenURL(whatsApp){
+            UIApplication.shared.open(whatsApp, options: [:], completionHandler: nil)
+        } else {
+            //
+        }
     }
 
-    @objc func button3Tapped() {
-        // Handle button 3 tap here
+    @objc func buttonInstTapped() {
+        if let instURL = URL(string: "https://www.instagram.com/madina_amankeldinova?igsh=NmphcnczOXJ6ZGQ2&utm_source=qr"),
+           UIApplication.shared.canOpenURL(instURL){
+            UIApplication.shared.open(instURL, options: [:], completionHandler: nil)
+        } else {
+            //
+        }
     }
 }
