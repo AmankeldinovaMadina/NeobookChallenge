@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F77A49E2B35E62E0047D1CB /* CustomProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F77A49D2B35E62E0047D1CB /* CustomProductCollectionViewCell.swift */; };
 		4FAA0D402B333CCD008BD381 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FAA0D3F2B333CCD008BD381 /* Category.swift */; };
 		4FAA0D432B334434008BD381 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4FAA0D422B334434008BD381 /* Alamofire */; };
 		4FAA0D462B33F6B8008BD381 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4FAA0D452B33F6B8008BD381 /* Kingfisher */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F77A49D2B35E62E0047D1CB /* CustomProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FAA0D3F2B333CCD008BD381 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		4FAA0D482B341BB2008BD381 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		4FAA0D4C2B34363A008BD381 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				4FAB1C542B2F4EBD00A773B7 /* CustomCategoryCollectionViewCell.swift */,
+				4F77A49D2B35E62E0047D1CB /* CustomProductCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				4FAB1C552B2F4EBD00A773B7 /* CustomCategoryCollectionViewCell.swift in Sources */,
 				4FAB1C532B2DE66B00A773B7 /* InfoController.swift in Sources */,
 				4FAB1C512B2DE65900A773B7 /* HistoryController.swift in Sources */,
+				4F77A49E2B35E62E0047D1CB /* CustomProductCollectionViewCell.swift in Sources */,
 				4FAB1C382B2C3D2000A773B7 /* SceneDelegate.swift in Sources */,
 				4FAA0D492B341BB2008BD381 /* Product.swift in Sources */,
 				4FAA0D402B333CCD008BD381 /* Category.swift in Sources */,
