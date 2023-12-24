@@ -66,22 +66,39 @@ class InfoController: UIViewController {
         buttonCall.contentHorizontalAlignment = .center
         buttonCall.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         buttonCall.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
-        buttonCall.backgroundColor = .lightGray
-        buttonCall.layer.cornerRadius = 10
+        buttonCall.backgroundColor = UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
+        buttonCall.layer.cornerRadius = 16
         buttonCall.clipsToBounds = true
-        buttonCall.frame = CGRect(x: 100, y: 100, width: 332, height: 54)
         buttonCall.addTarget(self, action: #selector(buttonCallTapped), for: .touchUpInside)
         buttonCall.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(buttonCall)
 
         let buttonWhatsapp = UIButton()
         buttonWhatsapp.setTitle("WhatsApp", for: .normal)
+        buttonWhatsapp.setImage(UIImage(named: "whatsapp"), for: .normal)
+        buttonWhatsapp.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        buttonWhatsapp.setTitleColor(.black, for: .normal)
+        buttonWhatsapp.contentHorizontalAlignment = .center
+        buttonWhatsapp.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        buttonWhatsapp.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        buttonWhatsapp.backgroundColor = UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
+        buttonWhatsapp.layer.cornerRadius = 16
+        buttonWhatsapp.clipsToBounds = true
         buttonWhatsapp.addTarget(self, action: #selector(buttonWhatsAppTapped), for: .touchUpInside)
         buttonWhatsapp.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(buttonWhatsapp)
 
         let buttonInst = UIButton()
         buttonInst.setTitle("Instagram", for: .normal)
+        buttonInst.setImage(UIImage(named: "instagram"), for: .normal)
+        buttonInst.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        buttonInst.setTitleColor(.black, for: .normal)
+        buttonInst.contentHorizontalAlignment = .center
+        buttonInst.titleEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
+        buttonInst.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+        buttonInst.backgroundColor = UIColor(red: 0.973, green: 0.973, blue: 0.973, alpha: 1)
+        buttonInst.layer.cornerRadius = 16
+        buttonInst.clipsToBounds = true
         buttonInst.addTarget(self, action: #selector(buttonInstTapped), for: .touchUpInside)
         buttonInst.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(buttonInst)
@@ -101,14 +118,20 @@ class InfoController: UIViewController {
             multiLineText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             multiLineText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
-            buttonCall.topAnchor.constraint(equalTo: multiLineText.bottomAnchor, constant: 20),
+            buttonCall.topAnchor.constraint(equalTo: multiLineText.bottomAnchor, constant: 33),
             buttonCall.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            buttonCall.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            buttonCall.bottomAnchor.constraint(equalTo: multiLineText.bottomAnchor, constant: 87),
 
-            buttonWhatsapp.topAnchor.constraint(equalTo: buttonCall.topAnchor),
-            buttonWhatsapp.leadingAnchor.constraint(equalTo: buttonCall.trailingAnchor, constant: 16),
+            buttonWhatsapp.topAnchor.constraint(equalTo: buttonCall.bottomAnchor, constant: 12),
+            buttonWhatsapp.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            buttonWhatsapp.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            buttonWhatsapp.bottomAnchor.constraint(equalTo: buttonCall.bottomAnchor, constant: 66),
 
-            buttonInst.topAnchor.constraint(equalTo: buttonCall.topAnchor),
-            buttonInst.leadingAnchor.constraint(equalTo: buttonWhatsapp.trailingAnchor, constant: 16),
+            buttonInst.topAnchor.constraint(equalTo: buttonWhatsapp.bottomAnchor, constant: 12),
+            buttonInst.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            buttonInst.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            buttonInst.bottomAnchor.constraint(equalTo: buttonWhatsapp.bottomAnchor, constant: 66)
         ])
 
         // Adjust the content size of the scroll view to fit the contentView
